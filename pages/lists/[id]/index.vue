@@ -7,6 +7,16 @@ const { data: article } = await useFetch(`/api/reviewDetail`, {
 if (!article.value) {
     throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
 }
+
+const deleteReview = async () => {
+    await useFetch('/api/reviewDelete', {
+        method: 'delete',
+        body: { 
+            id: id,
+        }
+    })
+    await navigateTo('/lists/')
+}
 </script>
 
 <template>
@@ -14,5 +24,6 @@ if (!article.value) {
         <h1 class="title text-2xl font-bold">{{ article.title }}</h1>
         <div class="p-3 md">{{ article.body }}</div>
         <nuxt-link class="button-blue" :to="`${id}/edit`">更新</nuxt-link>
+        <button @click="deleteReview" class="button-red">削除</button>
     </div>
 </template>
