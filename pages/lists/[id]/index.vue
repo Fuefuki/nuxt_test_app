@@ -21,8 +21,8 @@ const deleteReview = async () => {
 
 <template>
     <div class="flex flex-col">
-        <h1 class="title text-2xl font-bold">{{ article.title }}</h1>
-        <div class="p-3 md">{{ article.body }}</div>
+        <h1 class="title text-2xl font-bold">{{ article?.title }}</h1>
+        <div class="p-3 md">{{ article?.body }}</div>
         <nuxt-link class="button-blue" :to="`${id}/edit`">更新</nuxt-link>
         <button @click="deleteReview" class="button-red">削除</button>
     </div>

@@ -13,8 +13,8 @@ const submitForm = async () => {
         method: 'put',
         body: { 
             id: id,
-            title: article.value.title,
-            body: article.value.body,
+            title: article.value?.title,
+            body: article.value?.body,
         }
     })
     await navigateTo('/lists/')
@@ -25,10 +25,10 @@ const submitForm = async () => {
     <div class="flex flex-col">
         <form @submit.prevent="submitForm">
             <div>
-              <input class="bg-gray-50 border" type="text" name="title" v-model="article.title">
+              <input class="bg-gray-50 border" type="text" name="title" v-model="article!.title">
             </div>
             <div>
-              <textarea cols=20 rows=10 class="bg-gray-50 border" name="body" v-model="article.body"></textarea>
+              <textarea cols=20 rows=10 class="bg-gray-50 border" name="body" v-model="article!.body"></textarea>
             </div>
             <input class="button-blue" type="submit" value="更新">
         </form>
